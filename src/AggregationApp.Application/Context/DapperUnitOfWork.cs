@@ -1,6 +1,4 @@
-﻿// DapperUnitOfWork.cs
-
-using System.Data;
+﻿using System.Data;
 using MySql.Data.MySqlClient;
 using AggregationApp.Domain.Abstractions;
 

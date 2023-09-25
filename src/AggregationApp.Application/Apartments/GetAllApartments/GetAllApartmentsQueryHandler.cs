@@ -19,10 +19,14 @@ public class GetAllApartmentsQueryHandler : IRequestHandler<GetAllApartmentsQuer
         return apartments.Select(apartment => new ApartmentResponse
         {
             Id = apartment.Id,
-            Title = apartment.Title,
-            DueDate = apartment.DueDate,
-            IsCompleted = apartment.IsCompleted,
-            Priority = apartment.Priority
+            TINKLAS = apartment.TINKLAS,
+            OBT_PAVADINIMAS = apartment.OBT_PAVADINIMAS,
+            OBJ_GV_TIPAS = apartment.OBJ_GV_TIPAS,
+            OBJ_NUMERIS = apartment.OBJ_NUMERIS,
+            P_PLUS = apartment.P_PLUS,
+            PL_T = apartment.PL_T,
+            P_MINUS = apartment.P_MINUS,
+
         }).ToList();
     }
 }

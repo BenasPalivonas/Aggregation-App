@@ -20,10 +20,7 @@ public class GetApartmentByIdQueryHandler : IRequestHandler<GetApartmentByIdQuer
         return new ApartmentResponse()
         {
             Id = apartment.Id,
-            Title = apartment.Title,
-            DueDate = apartment.DueDate,
-            IsCompleted = apartment.IsCompleted,
-            Priority = apartment.Priority
+            TINKLAS = apartment.TINKLAS,
         };
     }
 }

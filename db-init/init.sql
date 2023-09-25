@@ -1,55 +1,16 @@
--- CREATE TABLE IF NOT EXISTS Apartments (
---     ID INT AUTO_INCREMENT PRIMARY KEY,
---     TINKLAS VARCHAR(255) NOT NULL,
---     OBT_PAVADINIMAS ENUM('Namas', 'Butas') NOT NULL,
---     OBJ_GV_TIPAS ENUM('G', 'N', 'Ne GV') NOT NULL,
---     OBJ_NUMERIS INT NOT NULL,
---     P_plus DECIMAL(10, 4),
---     PL_T DECIMAL(10, 4) NOT NULL,
---     P_minus DECIMAL(10, 4),
--- );
-
-
-
 CREATE TABLE IF NOT EXISTS Apartments (
     Id INT AUTO_INCREMENT PRIMARY KEY,
-    Title VARCHAR(255) NOT NULL,
-    DueDate DATE,
-    IsCompleted BOOLEAN,
-    Priority VARCHAR(50)
+    TINKLAS VARCHAR(255) NOT NULL,
+    OBT_PAVADINIMAS ENUM('Namas', 'Butas') NOT NULL,
+    OBJ_GV_TIPAS ENUM('G', 'N', 'Ne GV') NOT NULL,
+    OBJ_NUMERIS VARCHAR(255) NOT NULL,
+    P_plus DECIMAL(10, 4),
+    PL_T DATETIME NOT NULL,
+    P_minus DECIMAL(10, 4)
 );
 
 -- Seed some initial data
-INSERT INTO Apartments (Title, DueDate, IsCompleted, Priority) VALUES
-    ('Learn Docker', '2023-12-01', false, 'High'),
-    ('Implement API', '2023-09-20', false, 'Medium'),
-    ('Read GPT-4 paper', '2023-09-15', false, 'Low'),
-    ('Set up new server', '2023-09-10', true, 'High'),
-    ('Design database schema', '2023-09-12', true, 'Medium'),
-    ('Write unit tests', '2023-09-30', false, 'Medium'),
-    ('Prepare presentation', '2023-10-10', false, 'High'),
-    ('Update project documentation', '2023-10-05', true, 'Low'),
-    ('Attend weekly meeting', '2023-09-14', true, 'Low'),
-    ('Refactor legacy code', '2023-09-25', false, 'High'),
-    ('Review pull requests', '2023-09-18', true, 'Medium'),
-    ('Plan sprint tasks', '2023-10-02', false, 'Medium'),
-    ('Learn TypeScript', '2023-11-20', false, 'Low'),
-    ('Backup important files', '2023-10-30', true, 'High'),
-    ('Configure CI/CD pipeline', '2023-10-15', false, 'Medium');
-
--- INSERT INTO Apartments (Title, DueDate, IsCompleted, Priority) VALUES
---     ('Learn Docker', '2023-12-01', false, 'High'),
---     ('Implement API', '2023-09-20', false, 'Medium'),
---     ('Read GPT-4 paper', '2023-09-15', false, 'Low'),
---     ('Set up new server', '2023-09-10', true, 'High'),
---     ('Design database schema', '2023-09-12', true, 'Medium'),
---     ('Write unit tests', '2023-09-30', false, 'Medium'),
---     ('Prepare presentation', '2023-10-10', false, 'High'),
---     ('Update project documentation', '2023-10-05', true, 'Low'),
---     ('Attend weekly meeting', '2023-09-14', true, 'Low'),
---     ('Refactor legacy code', '2023-09-25', false, 'High'),
---     ('Review pull requests', '2023-09-18', true, 'Medium'),
---     ('Plan sprint tasks', '2023-10-02', false, 'Medium'),
---     ('Learn TypeScript', '2023-11-20', false, 'Low'),
---     ('Backup important files', '2023-10-30', true, 'High'),
---     ('Configure CI/CD pipeline', '2023-10-15', false, 'Medium');
+INSERT INTO Apartments (TINKLAS, OBT_PAVADINIMAS, OBJ_GV_TIPAS, OBJ_NUMERIS, P_plus, PL_T, P_minus) VALUES
+    ('Klaipėdos regiono tinklas', 'Butas', 'N', '4873840', 1.3193, '2022-05-31 00:00:00', 0.0),
+    ('Klaipėdos regiono tinklas', 'Butas', 'N', '5824708', 0.0563, '2022-05-31 00:00:00', 0.0),
+    ('Klaipėdos regiono tinklas', 'Butas', 'Ne GV', '27654782', NULL, '2022-05-31 00:00:00', NULL);

@@ -30,7 +30,7 @@ public class ApartmentRepository : IApartmentRepository
 
     public async Task AddAsync(Apartment item)
     {
-        const string sql = "INSERT INTO Apartments (Title, DueDate, IsCompleted, Priority) VALUES (@Title, @DueDate, @IsCompleted, @Priority)";
+        const string sql = "INSERT INTO Apartments (Title, DueDate, IsCompleted) VALUES (@Title, @DueDate, @IsCompleted)";
         await _connection.ExecuteAsync(sql, item);
     }
 }
