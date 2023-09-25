@@ -17,7 +17,7 @@ public static class DependencyInjection
             configuration.GetConnectionString("DefaultConnection") ??
             throw new ArgumentNullException(nameof(configuration));
 
-        var repositoryTypes = Assembly.GetAssembly(typeof(TodoItemRepository))
+        var repositoryTypes = Assembly.GetAssembly(typeof(ApartmentRepository))
             ?.GetTypes()
             .Where(t => t.IsClass && !t.IsAbstract && t.Name.EndsWith("Repository"))
             .ToList();

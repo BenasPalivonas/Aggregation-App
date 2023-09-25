@@ -1,24 +1,23 @@
 ﻿using FluentAssertions;
 using Moq;
-using AggregationApp.Domain.TodoItems;
-using AggregationApp.Domain.TodoItems.Events;
+using AggregationApp.Domain.Apartments;
 
-namespace AggregationApp.Domain.UnitTests.TodoItems;
+namespace AggregationApp.Domain.UnitTests.Apartments;
 
-public class TodoItemTests
+public class ApartmentTests
 {
     [Fact]
-    public void MarkAsCompleted_Should_Raise_TodoItemCompletedEvent()
+    public void MarkAsCompleted_Should_Raise_ApartmentCompletedEvent()
     {
         // Arrange
-        var todoItem = new TodoItem("Test", DateOnly.FromDateTime(DateTime.UtcNow), new PrioritySuggestionService());
+        var Apartment = new Apartment("Test", DateOnly.FromDateTime(DateTime.UtcNow), new PrioritySuggestionService());
 
         // Act
-        todoItem.MarkAsCompleted();
+        Apartment.MarkAsCompleted();
 
         // Assert
-        var todoItemCompletedEvent = todoItem.DomainEvents.OfType<TodoItemCompletedEvent>().SingleOrDefault();
-        todoItemCompletedEvent.Should().NotBeNull();
-        todoItemCompletedEvent!.TodoItem.Should().Be(todoItem);
+        var ApartmentCompletedEvent = Apartment.DomainEvents.OfType<ApartmentCompletedEvent>().SingleOrDefault();
+        ApartmentCompletedEvent.Should().NotBeNull();
+        ApartmentCompletedEvent!.Apartment.Should().Be(Apartment);
     }
 }

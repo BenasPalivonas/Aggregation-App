@@ -1,6 +1,6 @@
-﻿using AggregationApp.Domain.TodoItems;
+﻿using AggregationApp.Domain.Apartments;
 
-namespace AggregationApp.Domain.UnitTests.TodoItems;
+namespace AggregationApp.Domain.UnitTests.Apartments;
 
 public class PrioritySuggestionServiceTests
 {
@@ -14,10 +14,10 @@ public class PrioritySuggestionServiceTests
         // Arrange
         var service = new PrioritySuggestionService();
         var dueDate = DateOnly.FromDateTime(DateTime.UtcNow.AddDays(daysUntilDue));
-        var todo = new TodoItem("Test task", dueDate, service);
+        var apartment = new Apartment("Test task", dueDate, service);
 
         // Act
-        var priority = service.SuggestPriority(todo);
+        var priority = service.SuggestPriority(apartment);
 
         // Assert
         Assert.Equal(expectedPriority, priority);

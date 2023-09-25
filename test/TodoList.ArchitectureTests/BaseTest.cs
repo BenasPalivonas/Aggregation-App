@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using AggregationApp.Application.Context;
-using AggregationApp.Domain.Abstractions;
 using AggregationApp.Infrastructure.Data;
 
 namespace AggregationApp.ArchitectureTests;

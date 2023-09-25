@@ -1,11 +1,11 @@
-﻿namespace AggregationApp.Domain.TodoItems;
+﻿namespace AggregationApp.Domain.Apartments;
 
 public class PrioritySuggestionService
 {
-    public string SuggestPriority(TodoItem todoItem)
+    public string SuggestPriority(Apartment apartment)
     {
         // Convert DateOnly to DateTime (midnight of that date in UTC)
-        DateTime dueDateTime = todoItem.DueDate.ToDateTime(TimeOnly.FromDateTime(DateTime.UtcNow));
+        DateTime dueDateTime = apartment.DueDate.ToDateTime(TimeOnly.FromDateTime(DateTime.UtcNow));
 
         // Calculate time left
         TimeSpan timeLeft = dueDateTime - DateTime.UtcNow;

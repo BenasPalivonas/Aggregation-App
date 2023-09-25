@@ -24,8 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="TodoItems\Commands\" />
-    <Folder Include="TodoItems\Queries\" />
+    <Folder Include="Apartments\Commands\" />
+    <Folder Include="Apartments\Queries\" />
   </ItemGroup>
 
   <ItemGroup>

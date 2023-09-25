@@ -23,12 +23,12 @@ public class DapperUnitOfWork : IUnitOfWork
         try
         {
             _transaction.Commit();
-            return 1;
+            return 1; // Successfully committed
         }
         catch
         {
             _transaction.Rollback();
-            return 0;
+            return 0; // Indicates a failure
         }
         finally
         {

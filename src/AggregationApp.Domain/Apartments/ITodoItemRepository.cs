@@ -1,10 +1,9 @@
-﻿namespace AggregationApp.Domain.TodoItems;
+﻿namespace AggregationApp.Domain.Apartments;
 
-public interface ITodoItemRepository
+public interface IApartmentRepository
 {
-    Task<TodoItem> GetByIdAsync(int id);
-    Task<List<TodoItem>> GetAllAsync();
-    Task AddAsync(TodoItem item);
-    Task UpdateAsync(TodoItem item);
-    Task DeleteAsync(int id);
+    Task<Apartment> GetByIdAsync(int id);
+    Task<List<Apartment>> GetAllAsync();
+    Task AddAsync(Apartment item);
+
 }

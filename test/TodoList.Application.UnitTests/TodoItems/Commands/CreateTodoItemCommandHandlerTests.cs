@@ -1,28 +1,27 @@
 ﻿using Moq;
-using AggregationApp.Application.TodoItems.CreateTodoItem;
-using AggregationApp.Domain.Abstractions;
-using AggregationApp.Domain.TodoItems;
+using AggregationApp.Application.Apartments.CreateApartment;
+using AggregationApp.Domain.Apartments;
 using AggregationApp.Infrastructure.Repositories;
 
-namespace AggregationApp.Application.UnitTests.TodoItems.Commands;
+namespace AggregationApp.Application.UnitTests.Apartments.Commands;
 
-public class CreateTodoItemCommandHandlerTests
+public class CreateApartmentCommandHandlerTests
 {
     [Fact]
-    public async Task Handle_ShouldPersistTodoItem()
+    public async Task Handle_ShouldPersistApartment()
     {
         // Arrange
         var mockUnitOfWork = new Mock<IUnitOfWork>();
-        var mockRepository = new Mock<ITodoItemRepository>();
+        var mockRepository = new Mock<IApartmentRepository>();
 
-        mockRepository.Setup(r => r.AddAsync(It.IsAny<TodoItem>())).Returns(Task.CompletedTask);
+        mockRepository.Setup(r => r.AddAsync(It.IsAny<Apartment>())).Returns(Task.CompletedTask);
 
         // You can either use a real PrioritySuggestionService or mock it.
         // If you just want to test the handler logic, it's often easier to use the real service if it doesn't have external dependencies.
         var priorityService = new PrioritySuggestionService();
 
-        var handler = new CreateTodoItemCommandHandler(mockRepository.Object, mockUnitOfWork.Object, priorityService);
-        var command = new CreateTodoItemCommand
+        var handler = new CreateApartmentCommandHandler(mockRepository.Object, mockUnitOfWork.Object, priorityService);
+        var command = new CreateApartmentCommand
         {
             Title = "Test Task",
             DueDate = DateOnly.MinValue
@@ -32,7 +31,7 @@ public class CreateTodoItemCommandHandlerTests
         await handler.Handle(command, CancellationToken.None);
 
         // Assert
-        mockRepository.Verify(r => r.AddAsync(It.IsAny<TodoItem>()), Times.Once());
+        mockRepository.Verify(r => r.AddAsync(It.IsAny<Apartment>()), Times.Once());
         mockUnitOfWork.Verify(u => u.Commit(), Times.Once());
     }
 }

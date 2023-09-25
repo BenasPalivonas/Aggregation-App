@@ -1,13 +1,13 @@
 ﻿using AggregationApp.Domain.Abstractions;
 
-namespace AggregationApp.Domain.TodoItems.Events;
+namespace AggregationApp.Domain.Apartments.Events;
 
-public class TodoItemCompletedEvent : IDomainEvent
+public class ApartmentCompletedEvent : IDomainEvent
 {
-    public TodoItemCompletedEvent(TodoItem item)
+    public ApartmentCompletedEvent(Apartment item)
     {
-        TodoItem = item;
+        Apartment = item;
     }
 
-    public TodoItem TodoItem { get; }
+    public Apartment Apartment { get; }
 }

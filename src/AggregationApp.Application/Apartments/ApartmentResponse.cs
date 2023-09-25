@@ -1,6 +1,6 @@
 ﻿namespace AggregationApp.Application.Apartments;
 
-public class ApartmentsResponse
+public class ApartmentResponse
 {
     public int Id { get; set; }
     public string Title { get; set; }

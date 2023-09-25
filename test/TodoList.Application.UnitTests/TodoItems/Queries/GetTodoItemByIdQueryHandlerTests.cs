@@ -1,33 +1,33 @@
 ﻿using Moq;
-using AggregationApp.Application.TodoItems;
-using AggregationApp.Application.TodoItems.GetTodoItem;
-using AggregationApp.Domain.TodoItems;
+using AggregationApp.Application.Apartments;
+using AggregationApp.Application.Apartments.GetApartment;
+using AggregationApp.Domain.Apartments;
 
-namespace AggregationApp.Application.UnitTests.TodoItems.Queries;
+namespace AggregationApp.Application.UnitTests.Apartments.Queries;
 
-public class GetTodoItemByIdQueryHandlerTests
+public class GetApartmentByIdQueryHandlerTests
 {
     [Fact]
-    public async Task Handle_ShouldReturnCorrectTodoItem()
+    public async Task Handle_ShouldReturnCorrectApartment()
     {
         // Arrange
-        var todoItem = new TodoItem("Test", DateOnly.MinValue, new PrioritySuggestionService());
-        var todoItemDto = new ApartmentsResponse
+        var Apartment = new Apartment("Test", DateOnly.MinValue, new PrioritySuggestionService());
+        var ApartmentDto = new ApartmentsResponse
         {
-            Id = todoItem.Id,
-            Title = todoItem.Title,
-            DueDate = todoItem.DueDate,
-            IsCompleted = todoItem.IsCompleted,
-            Priority = todoItem.Priority
-        }; 
+            Id = Apartment.Id,
+            Title = Apartment.Title,
+            DueDate = Apartment.DueDate,
+            IsCompleted = Apartment.IsCompleted,
+            Priority = Apartment.Priority
+        };
 
-        var mockRepository = new Mock<ITodoItemRepository>();
+        var mockRepository = new Mock<IApartmentRepository>();
 
-        mockRepository.Setup(r => r.GetByIdAsync(It.IsAny<int>())).ReturnsAsync(todoItem);
+        mockRepository.Setup(r => r.GetByIdAsync(It.IsAny<int>())).ReturnsAsync(Apartment);
 
-        var handler = new GetTodoItemByIdQueryHandler(mockRepository.Object);
+        var handler = new GetApartmentByIdQueryHandler(mockRepository.Object);
 
-        var query = new GetTodoItemByIdQuery
+        var query = new GetApartmentByIdQuery
         {
             Id = 1
         };
@@ -36,9 +36,9 @@ public class GetTodoItemByIdQueryHandlerTests
         var result = await handler.Handle(query, CancellationToken.None);
 
         // Assert
-        Assert.Equal(todoItemDto.Title, result.Title);
-        Assert.Equal(todoItemDto.DueDate, result.DueDate);
-        Assert.Equal(todoItemDto.IsCompleted, result.IsCompleted);
-        Assert.Equal(todoItemDto.Priority, result.Priority);
+        Assert.Equal(ApartmentDto.Title, result.Title);
+        Assert.Equal(ApartmentDto.DueDate, result.DueDate);
+        Assert.Equal(ApartmentDto.IsCompleted, result.IsCompleted);
+        Assert.Equal(ApartmentDto.Priority, result.Priority);
     }
 }

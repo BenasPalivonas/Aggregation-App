@@ -1,21 +1,21 @@
 ﻿using AggregationApp.Domain.Abstractions;
-using AggregationApp.Domain.TodoItems.Events;
+using AggregationApp.Domain.Apartments.Events;
 
-namespace AggregationApp.Domain.TodoItems;
+namespace AggregationApp.Domain.Apartments;
 
-public class TodoItem : BaseEntity
+public class Apartment : BaseEntity
 {
     public string Title { get; private set; }
     public DateOnly DueDate { get; private set; }
     public bool IsCompleted { get; private set; }
     public string Priority { get; private set; }
 
-    private TodoItem()
+    private Apartment()
     {
         // This empty constructor is required for Dapper materialization
     }
 
-    public TodoItem(string title, DateOnly dueDate, PrioritySuggestionService priorityService)
+    public Apartment(string title, DateOnly dueDate, PrioritySuggestionService priorityService)
     {
         SetTitle(title);
         SetDueDate(dueDate);
@@ -26,7 +26,7 @@ public class TodoItem : BaseEntity
     public void MarkAsCompleted()
     {
         IsCompleted = true;
-        AddDomainEvent(new TodoItemCompletedEvent(this));
+        AddDomainEvent(new ApartmentCompletedEvent(this));
     }
 
     public void SetTitle(string title)
